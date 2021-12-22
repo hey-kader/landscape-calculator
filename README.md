@@ -1,6 +1,6 @@
 # desktop calculator for landscape
 
-![alt text](calculator.png)
+![alt text](calculator.png | 150)
 
 
 ### this is a desktop calculator which could either live inside an application, or in ```%landscape``` 
