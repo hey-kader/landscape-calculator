@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+	<title>caclulator</title>
+	<link href="./style.css" rel="stylesheet" type="text/css" />
+	<meta name="Author" content="~nolsyp-mardyr" />
+  </head>
+  <body>
+
+	<style type="text/css">color: 'blue'</style>
+	<div id="wrapper" style="border: groove 2px; border-radius: 5px;" >
+	<table id="grid">
+	  <tr>
+		<td>
+		  <textarea name="screen" id="screen" rows="2" cols="19" placeholder="132.133.122.122"></textarea>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  <button><code>0</code></button>
+		  <button><code>1</code></button>
+		  <button><code>2</code></button>
+		  <button><code>3</code></button>
+		  <button><code>00</code></button>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  <button><code>4</code></button>
+		  <button><code>5</code></button>
+		  <button><code>6</code></button>
+		  <button><code>7</code></button>
+		  <button><code>0x</code></button>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  <button><code>8</code></button>
+		  <button><code>9</code></button>
+		  <button><code>a</code></button>
+		  <button><code>b</code></button>
+		  <button><code>0b</code></button>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  <button><code>c</code></button>
+		  <button><code>d</code></button>
+		  <button><code>e</code></button>
+		  <button><code>f</code></button>
+		  <button><code>=</code></button>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  <button><code>+</code></button>
+		  <button><code>-</code></button>
+		  <button><code>*</code></button>
+		  <button><code>/</code></button>
+		  <button><code>%</code></button>
+		</td>
+	  </tr>
+	</table>
+	</div>
+	<script type="text/javascript">
+		var delta = ""
+
+		function mul (delta) {
+		}
+
+		function eval (delta) {
+		  var word = "" 
+		  var last = ""
+		  var oper = null 
+		  delta = Array(delta)
+		  delta.forEach( (d) => {
+
+
+			if ((d == '*' || d == '/' || d == '+' || d == '-' || d == '%') && oper == null) {
+			  oper = d
+			  last = word
+			  word = ""
+			}
+			if ((d == '*' || d == '/' || d == '+' || d == '-' || d == '%') && oper != null) { 
+				if (oper == '*') {
+				  last = last*word
+				}
+			    else if (oper == '/') {
+				  last = last/word
+				}
+			    else if (oper == '%') {
+				  last = last % word
+				}
+			    else if (oper == '+') {
+				  last = last + word
+				}
+			    else if (oper == '-') {
+				  last = last - word
+				}
+				oper = d
+				word = ""
+				document.querySelector('textbox').innerText = last
+			}
+			else {
+			  word += d
+			}
+		  })
+
+		}
+
+	    function print_second_row (stream) {
+		  if (stream == '=') {
+			delta = eval(delta)
+		  }
+
+		  document.querySelector('textarea').innerText = delta
+		  delta += stream
+		}
+
+		document.querySelectorAll('button').forEach( (b) => {
+		  b.style.margin = "auto"
+		  b.style.width = "32px"
+		  b.style.height = "32px"
+		  b.addEventListener("click", () => {print_second_row(b.innerText)})
+		})
+	</script>
+  </body>
+</html>
