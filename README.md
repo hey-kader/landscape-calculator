@@ -1,6 +1,6 @@
 # desktop calculator for landscape
 
-![alt text](url=https://github.com/hey-kader/landscape-calculator/tree/master/resources/calculator.png)
+![alt text](calculator.png)
 
 
 ### this is a desktop calculator which could either live inside an application, or in ```%landscape``` 
